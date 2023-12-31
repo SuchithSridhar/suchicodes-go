@@ -1,4 +1,4 @@
-run:
+run: gen
 	@go run cmd/main.go
 
 gen:

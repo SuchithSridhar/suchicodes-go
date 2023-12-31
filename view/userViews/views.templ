@@ -1,4 +1,4 @@
-package user
+package userViews
 
 import "suchicodes-go/view/layout"
 
@@ -6,7 +6,7 @@ var props = layout.BaseProps {
     Title: "",
 }
 
-templ Show() {
+templ UserPage() {
     @layout.Base(props) {
         <div>Hello from the user page</div>
     }

@@ -1,6 +1,9 @@
 package home
 
-import "suchicodes-go/view/layout"
+import (
+    "suchicodes-go/view/layout"
+	"suchicodes-go/cmd/cookie"
+)
 
 
 var props = layout.BaseProps {
@@ -10,8 +13,30 @@ var props = layout.BaseProps {
     Footer: nil,
 }
 
+func isLoggedIn(c context.Context) string {
+    if username, ok := c.Value(cookie.UserKey).(string); ok {
+        return username
+    } else {
+        return ""
+    }
+}
+
+func getCurrentTheme(c context.Context) string {
+    if theme, ok := c.Value(cookie.ThemeKey).(string); ok {
+        return theme
+    } else {
+        return "light"
+    }
+}
+
 templ Show() {
     @layout.Base(props) {
         <h1>Index page</h1>
+        if isLoggedIn(ctx) != "" {
+            <h2>User is logged in!</h2>
+        } else {
+            <h2>User is not logged in!</h2>
+        }
+        <h3> Current theme is { getCurrentTheme(ctx) } </h3>
     }
 }

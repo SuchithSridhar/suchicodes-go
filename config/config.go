@@ -13,34 +13,35 @@ type GlobalConfig struct {
 }
 
 const DEVELOPMENT = "development"
-const SECRET_KEY = "development-secret-key"
+var SECRET_KEY = "secret"
 
-func GetConfig() *GlobalConfig {
+var Config = GlobalConfig {
+    ENVIRONMENT: DEVELOPMENT,
+    SECRET_KEY: nil,
+    DATABASE_URI: "",
+    ROOT_DIRECTORY: "",
+}
+
+func InitConfig() {
     // Set the different config variables based on environment variables
-    c := GlobalConfig {
-        ENVIRONMENT: DEVELOPMENT,
-        SECRET_KEY: nil,
-        DATABASE_URI: "",
-        ROOT_DIRECTORY: "",
-    }
 
     var value string
     var ok bool
 
     if value, ok = os.LookupEnv("ENVIRONMENT"); ok {
-        c.ENVIRONMENT = value
+        Config.ENVIRONMENT = value
     } 
 
     if value, ok = os.LookupEnv("DATABASE_URI"); ok {
-        c.DATABASE_URI = value
-    } else if c.ENVIRONMENT != DEVELOPMENT {
+        Config.DATABASE_URI = value
+    } else if Config.ENVIRONMENT != DEVELOPMENT {
         slog.Error("Database URI not set in non-development environment.")
         os.Exit(1)
     }
 
     if value, ok = os.LookupEnv("ROOT_DIRECTORY"); ok {
-        c.ROOT_DIRECTORY = value
-    } else if c.ENVIRONMENT != DEVELOPMENT {
+        Config.ROOT_DIRECTORY = value
+    } else if Config.ENVIRONMENT != DEVELOPMENT {
         slog.Error("Root directory not set in non-development environment.")
         os.Exit(1)
     } else {
@@ -49,15 +50,15 @@ func GetConfig() *GlobalConfig {
             slog.Error("Unable to set root directory.")
             os.Exit(1)
         }
-        c.DATABASE_URI = cwd
+        Config.DATABASE_URI = cwd
     }
 
     if value, ok = os.LookupEnv("SECRET_KEY"); ok {
-        c.SECRET_KEY = []byte(value)
-    } else if c.ENVIRONMENT != DEVELOPMENT {
+        Config.SECRET_KEY = []byte(value)
+    } else if Config.ENVIRONMENT != DEVELOPMENT {
         slog.Error("Secret key not set in non-development environment.")
         os.Exit(1)
+    } else {
+        Config.SECRET_KEY = []byte(SECRET_KEY)
     }
-
-    return &c
 }

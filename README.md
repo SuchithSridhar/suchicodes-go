@@ -36,3 +36,11 @@ The hardest part of this is that I have such a hard time finding an example of a
 GOOD website built using these technologies. The closest thing I could find to
 this was: <https://github.com/muhwyndhamhp/marknotes> but that was not similar
 enough to help me.
+
+
+## Update 2023, Dec 31 (3:17 am)
+
+Having spent way too much time on this, I finally figured out how to set
+cookies and update sessions. I also figured out how I can set contexts and
+variables that can be accessed by `templ` directly. There was so research and
+testing that had to be done... I'm so tired so I'ma head to bed now.
