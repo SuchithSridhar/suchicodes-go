@@ -1,0 +1,13 @@
+package user
+
+import "suchicodes-go/view/layout"
+
+var props = layout.BaseProps {
+    Title: "",
+}
+
+templ Show() {
+    @layout.Base(props) {
+        <div>Hello from the user page</div>
+    }
+}

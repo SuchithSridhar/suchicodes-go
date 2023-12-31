@@ -1,0 +1,17 @@
+package home
+
+import "suchicodes-go/view/layout"
+
+
+var props = layout.BaseProps {
+    Title: "",
+    Styles: nil,
+    Header: nil,
+    Footer: nil,
+}
+
+templ Show() {
+    @layout.Base(props) {
+        <h1>Index page</h1>
+    }
+}
