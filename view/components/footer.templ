@@ -1,0 +1,30 @@
+package components
+
+templ Footer(theme string) {
+    <footer class="">
+        <div class="container">
+            <span class="icons">
+                <a href="https://github.com/SuchithSridhar"
+                    target="_blank"
+                    class="github-icon">
+
+                    if theme != "dark" {
+                        <img src="/static/assets/linkedin-light.svg" alt="Linkedin Logo"/>
+                    } else {
+                        <img src="/static/assets/linkedin-dark.svg" alt="Linkedin Logo"/>
+                    }
+                </a>
+                <a href="https://www.linkedin.com/in/suchithsridhar"
+                    class="linkedin-icon"
+                    target="_blank">
+                    if theme != "dark" {
+                        <img src="/static/assets/github-light.svg" alt="Github logo"/>
+                    } else {
+                        <img src="/static/assets/github-dark.svg" alt="Github logo"/>
+                    }
+                </a>
+            </span>
+            <p>© 2021 - 2024 Suchith Sridhar. All rights reserved.</p>
+        </div>
+    </footer>
+}

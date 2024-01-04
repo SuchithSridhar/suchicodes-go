@@ -1,0 +1,67 @@
+package home
+
+import "suchicodes-go/view/layout"
+
+var contactProps = layout.BaseProps {
+    Title: "Contact | Suchicodes",
+    Styles: []string{"contact/contact.css"},
+}
+
+templ Contact() {
+    @layout.Base(contactProps) {
+        <section id="contact">
+            <h1>Contact Me</h1>
+            <div class="contact-me-container">
+                <div class="info-section">
+                    <h2>Information</h2>
+                    <h5 class="title-text">Address</h5>
+                    <p>
+                        Suchith Sridhar Khajjayam <br/>
+                        Halifax, Canada
+                    </p>
+                    <h5 class="title-text">Email</h5>
+                    <a href="mailto:suchith.sridhar+sc@gmail.com">
+                        suchith.sridhar+sc@gmail.com
+                    </a>
+                    <h5 class="title-text">Socials</h5>
+                    <ul>
+                        <li><a href="https://github.com/SuchithSridhar"
+                                target="_blank">
+                            GitHub
+                        </a></li>
+                        <li><a href="https://linkedin.com/in/SuchithSridhar"
+                                target="_blank">
+                            LinkedIn
+                        </a></li>
+                    </ul>
+
+                </div>
+                <div class="msg-section">
+                    <h2>Send Me A Message</h2>
+                    <form>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="name-input">Name</label>
+                                <input id="name-input" name="name" type="text"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-input">Email</label>
+                                <input id="email-input" type="email" name="email"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject-input">Subject</label>
+                            <input id="subject-input" name="subject" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-input">Message</label>
+                            <textarea id="message-input" name="message">
+                            </textarea>
+                        </div>
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    }
+}

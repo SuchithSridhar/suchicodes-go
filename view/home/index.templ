@@ -1,42 +1,168 @@
 package home
 
 import (
-    "suchicodes-go/view/layout"
-	"suchicodes-go/cmd/cookie"
+    "suchicodes-go/view/utils"
+    "suchicodes-go/view/components"
 )
 
-
-var props = layout.BaseProps {
-    Title: "",
-    Styles: nil,
-    Header: nil,
-    Footer: nil,
-}
-
-func isLoggedIn(c context.Context) string {
-    if username, ok := c.Value(cookie.UserKey).(string); ok {
-        return username
-    } else {
-        return ""
-    }
-}
-
-func getCurrentTheme(c context.Context) string {
-    if theme, ok := c.Value(cookie.ThemeKey).(string); ok {
-        return theme
-    } else {
-        return "light"
-    }
+templ SkillsTabs() {
+    <div id="tab-list">
+        <div class="tab">
+            <button id="defaultOpen" class="tablinks active" onclick="openSkill(event, 'Languages')">Languages</button>
+            <button id="" class="tablinks" onclick="openSkill(event, 'Soft Skills')">Soft Skills</button>
+            <button id="" class="tablinks" onclick="openSkill(event, 'Frameworks')">Frameworks</button>
+            <button id="" class="tablinks" onclick="openSkill(event, 'Other')">Other</button>
+        </div>
+    </div>
+    <div id="tab-container" class="">
+        <div id="Languages" class="tabcontent" style="display: none;">
+            <h3 class="title">Languages</h3>
+            <ul class="skills-list">
+                <li>C</li>
+                <li>Golang</li>
+                <li>Python</li>
+                <li>Java</li>
+                <li>Ruby</li>
+                <li>Javascript</li>
+            </ul>
+        </div>
+        <div id="Soft Skills" class="tabcontent" style="display: none;">
+            <h3 class="title">Soft Skills</h3>
+            <ul class="skills-list">
+                <li>Problem Solving</li>
+                <li>Teamwork</li>
+                <li>Leadership</li>
+                <li>Passionate</li>
+                <li>Critical Thinking</li>
+                <li>Communication</li>
+                <li>Openness to criticism</li>
+            </ul>
+        </div>
+        <div id="Frameworks" class="tabcontent" style="display: none;">
+            <h3 class="title">Frameworks</h3>
+            <ul class="skills-list">
+                <li>Ruby on Rails</li>
+                <li>Nodejs</li>
+                <li>ReactJS</li>
+                <li>Django</li>
+                <li>Flask</li>
+                <li>Tkinter</li>
+            </ul>
+        </div>
+        <div id="Other" class="tabcontent" style="display: block;">
+            <h3 class="title">Other</h3>
+            <ul class="skills-list">
+                <li>Linux</li>
+                <li>MacOS</li>
+                <li>Windows</li>
+                <li>Sys Admin</li>
+                <li>Nginx</li>
+                <li>Apache</li>
+            </ul>
+        </div>
+    </div>
 }
 
 templ Show() {
-    @layout.Base(props) {
-        <h1>Index page</h1>
-        if isLoggedIn(ctx) != "" {
-            <h2>User is logged in!</h2>
-        } else {
-            <h2>User is not logged in!</h2>
-        }
-        <h3> Current theme is { getCurrentTheme(ctx) } </h3>
-    }
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>Suchicodes</title>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <link rel="stylesheet" href="/static/styles/base.css" class="css"/>
+            <link rel="icon" href="/static/assets/favicon.svg"/>
+            if utils.GetCurrentTheme(ctx) != "dark" {
+                <link id="theme-css" data-theme="light" rel="stylesheet" href="/static/styles/colors-light.css" class="css"/>
+            } else {
+                <link id="theme-css" data-theme="dark" rel="stylesheet" href="/static/styles/colors-dark.css" class="css"/>
+            }
+            <link rel="stylesheet" href="/static/styles/components/navbar.css" class="css"/>
+            <link rel="stylesheet" href="/static/styles/components/footer.css" class="css"/>
+            <link rel="stylesheet" href="/static/styles/index/index.css" class="css"/>
+            <link rel="stylesheet" href="/static/styles/index/skills-tabs.css" class="css"/>
+
+            // Must come before anything that depends on change theme
+            <script src="/static/scripts/base.js" defer></script>
+            <script src="/static/scripts/change-theme.js" defer></script>
+            <script src="/static/scripts/index/matrix.js" defer></script>
+            <script src="/static/scripts/components/footer.js" defer></script>
+            <script src="/static/scripts/index/skills-tabs.js" defer></script>
+        </head>
+        <body>
+            <canvas id="matrix-canvas"></canvas>
+            @components.Navbar(utils.GetCurrentTheme(ctx))
+            <div class="container">
+                <header>
+                    <div class="picture-container">
+                        <img
+                            class="profile-picture"
+                            src="/static/assets/profile.jpg"
+                            alt="Suchith profile picture"
+                        />
+                    </div>
+                    <h2><span class="name">Suchith</span></h2>
+                    <h1>Programmer</h1>
+                    <div class="resume-btn-container">
+                        <a class="btn-resume" href="/resume">Resume</a>
+                    </div>
+                </header>
+                <section class="pages">
+                    <a href="/blogs">
+                    <div class="card">
+                        <h4>Blogs</h4>
+                        A repository of my knowledge gained over the years.
+                    </div>
+                    </a>
+                    <a href="/projects">
+                    <div class="card">
+                        <h4>Projects</h4>
+                        All the projects I've worked on including research and
+                        software projects. 
+                    </div>
+                    </a>
+                    <a href="/blogs/category/dal-notes">
+                    <div class="card">
+                        <h4>Dal Notes</h4>
+                        Notes I've taken at Dalhousie University. Here to help other
+                        students in their academic journey.
+                    </div>
+                    </a>
+                    <a href="/about">
+                    <div class="card">
+                        <h4>About Me</h4>
+                        Meet the mind behind the screen - a passionate Computer
+                        Science student and a software freelancer.
+                    </div>
+                    </a>
+                </section>
+                <hr class="section-divider"/>
+                <section class="about">
+                    <h3>About Me</h3>
+                    <p class="align-self-center">
+                        I'm a <b>Developer</b> - I enjoy building stuff on the web
+                        and otherwise :). I am currently pursuing my undergraduate
+                        degree in computer science at the Dalhousie University,
+                        Canada.
+                    </p>
+                    <p>
+                        I'm a Full-Stack programmer who also specializes in GUI and
+                        CLI (Command-line interface) based application programming for
+                        Windows and Linux. I am passionate about computers and
+                        servers and intrigued about operating systems and their
+                        workings.
+                    </p>
+                </section>
+
+                <hr class="section-divider"/>
+
+                <section class="skills">
+                    @SkillsTabs()
+                </section>
+
+                <hr class="section-divider"/>
+            </div>
+            @components.Footer(utils.GetCurrentTheme(ctx))
+        </body>
+    </html>
 }

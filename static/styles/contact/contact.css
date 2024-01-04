@@ -1,0 +1,132 @@
+#contact {
+    margin-top: 80px;
+    min-height: calc(100vh - 350px);
+}
+
+#contact h1 {
+    font-size: 3rem;
+}
+
+#contact h2 {
+    font-size: 2rem;
+    margin: 0 0 20px;
+}
+
+#contact h5 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+#contact p {
+    margin: 0 0 20px;
+    font-size: 1.2rem;
+}
+
+#contact a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 10px 0 20px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--color-background-1000);
+    background-color: var(--color-foreground-900);
+    border: var(--color-background-900) 1px solid;
+}
+
+#contact a:hover {
+    color: var(--color-background-1000);
+    background-color: var(--color-foreground-1000);
+    transition: color 0.3s ease-out, background-color 0.3s ease-out;
+}
+
+#contact ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 10px;
+}
+#contact ul li {
+    margin: 0;
+    padding: 0;
+}
+
+#contact .contact-me-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+
+#contact .contact-me-container .info-section {
+    position: relative;
+    padding: 20px;
+    color: var(--color-foreground-1000);
+    background-color: var(--color-background-900);
+}
+
+#contact .contact-me-container .msg-section {
+    position: relative;
+    padding: 20px;
+}
+
+#contact .contact-me-container .msg-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.form-group label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    color: var(--color-accent-1000);
+    background-color: var(--color-background-1000);
+    transform: translate(10px, -0.6rem);
+    padding: 0px 3px;
+}
+
+#contact input {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+#contact textarea {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    height: 170px;
+}
+
+#contact input:focus {
+    outline: none;
+}
+
+#contact button {
+    color: var(--color-foreground-1000);
+    background-color: var(--color-background-1000);
+    padding: 10px;
+    font-size: 1.2rem;
+    outline: none;
+    border: var(--color-foreground-1000) 1px solid;
+}
+
+
+#contact button:hover {
+    cursor: pointer;
+    color: var(--color-background-1000);
+    background-color: var(--color-foreground-1000);
+    transition: color 0.1s ease-out, background-color 0.1s ease-out;
+}

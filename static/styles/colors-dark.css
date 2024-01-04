@@ -1,0 +1,12 @@
+:root {
+    --color-foreground-900: #c9d8e5;
+    --color-background-900: #3b5770;
+
+    --color-foreground-1000: #ffffff;
+    --color-background-1000: #273847;
+
+    --color-background-alpha-1000: #273847dd;
+    --color-contrast-background-1000: #fbfdfe;
+    --color-contrast-foreground-1000: #243844;
+    --color-accent-1000: #a6f8ff;
+}

@@ -1,0 +1,48 @@
+package home
+
+import "suchicodes-go/view/layout"
+
+var aboutProps = layout.BaseProps {
+    Title: "About | Suchicodes",
+    Styles: []string{"about/about.css"},
+}
+
+templ About() {
+    @layout.Base(aboutProps) {
+        <section id="about" class="">
+            <h1 class="title">A Little About Me</h1>
+            <p class="text">
+                Hello there! My name is <b>Suchith</b> and I'm a
+                <b>Developer</b> (I enjoy building stuff on the web and
+                otherwise :)). I am currently pursuing my <b>undergraduate
+                degree in computer science</b> at the Dalhousie University,
+                Canada.
+            </p>
+            <p class="text">
+                I'm a <b>Full-Stack programmer</b> who also specializes in
+                <b>GUI and CLI</b> (Command-line interface) based application
+                programming for Windows and Linux. I am passionate about
+                computers and servers and intrigued about operating systems and
+                their workings.
+            </p>
+            <p class="text">
+                My specialties include setting up an environment for hosting a
+                web app including coding <b>both frontend and backend</b> while
+                simultaneously setting up a Linux server for hosting the app.
+            </p>
+            <p class="text">
+                What started out as an obsession to learn everything (I know
+                it's not possible!) ended up becoming one of my <b>biggest
+                skill</b>. I am now an <b>intentional &amp; passionate
+                learner</b> who learns almost anything <em>quickly</em> and
+                <em>effectively</em>.
+            </p>
+            <p class="text">
+                My hobbies include (Not that anyone asked, but hey this is my
+                website!) studying Astrophysics, Philosophy, Economics,
+                Psychology, Theoretical Physics, and the rest of the sciences
+                (fill in the blanks!).
+            </p>
+        </section>
+    }
+}

@@ -1,0 +1,67 @@
+package components
+
+import (
+    "suchicodes-go/view/utils"
+)
+
+func isDark(c context.Context) bool {
+    return utils.GetCurrentTheme(c) == "dark"
+}
+
+templ Navbar(theme string) {
+    <nav class="navbar nav-desktop">
+        <ul class="navbar-nav">
+            <div class="nav-left-items">
+                <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/projects" class="nav-link">Projects</a></li>
+            </div>
+            <li class="nav-item"><a href="/" class="nav-brand">Suchicodes</a></li>
+            <div class="nav-right-items">
+                <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+            </div>
+            <button id="theme-changer" class="theme-changer">
+                if theme != "dark" {
+                    <img src="/static/assets/sun.svg" alt="theme changer"/>
+                } else {
+
+                    <img src="/static/assets/moon.svg" alt="theme changer"/>
+                }
+            </button>
+        </ul>
+    </nav>
+
+    <nav class="navbar nav-tablet">
+        <div class="top-container">
+            <a href="/" class="nav-brand">Suchicodes</a>
+
+            <div class="buttons-container">
+                <button id="navbar-toggler" class="navbar-toggler">
+                    if theme != "dark" {
+                        <img src="/static/assets/menu-light.svg" alt="theme changer"/>
+                    } else {
+
+                        <img src="/static/assets/menu-dark.svg" alt="theme changer"/>
+                    }
+                </button>
+                <button id="theme-changer" class="theme-changer">
+                    if theme != "dark" {
+                        <img src="/static/assets/sun.svg" alt="theme changer"/>
+                    } else {
+
+                        <img src="/static/assets/moon.svg" alt="theme changer"/>
+                    }
+                </button>
+            </div>
+        </div>
+        
+        <div class="navbar-nav">
+            <ul class="">
+                <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="/projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+}
