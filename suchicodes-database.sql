@@ -75,19 +75,32 @@ CREATE TABLE User (
     UNIQUE (username)
 );
 
+CREATE TABLE BlogTag (
+    id UUID NOT NULL,	
+    name VARCHAR NOT NULL
+);
+
 CREATE TABLE Blog (
-	id UUID NOT NULL, 
-	category UUID NOT NULL, 
-	created DATETIME, 
-	updated DATETIME, 
+    id UUID NOT NULL, 
+    category UUID NOT NULL, 
+    created DATETIME, 
+    updated DATETIME, 
     author UUID NOT NULL,
-	title VARCHAR, 
-	html TEXT,
-	markdown TEXT,
-	brief TEXT,
-	date_updated DATETIME, 
-	PRIMARY KEY (id), 
-	FOREIGN KEY(category) REFERENCES Category (id)
+    title VARCHAR, 
+    html TEXT,
+    markdown TEXT,
+    brief TEXT,
+    date_updated DATETIME, 
+    PRIMARY KEY (id), 
+    FOREIGN KEY(category) REFERENCES Category (id)
+)
+
+CREATE TABLE BlogTag_Blog (
+    blog UUID NOT NULL,
+    tag UUID NOT NULL,
+    PRIMARY KEY (blog, tag), 
+    FOREIGN KEY(blog) REFERENCES Blog (id),
+    FOREIGN KEY(tag) REFERENCES BlogTag (id)
 )
 
 -- Use this table to keep track of uploaded images for blogs

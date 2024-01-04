@@ -24,3 +24,29 @@
 - [ ] Set up a simple way to generate UUIDs and common operations on UUIDs.
 
 - [ ] Set up a way to hash passwords and compare passwords using bcrypt.
+
+
+Here is a list of end-points that have to be built:
+
+- [ ] /projects
+- [ ] /projects/<project id>
+- [ ] /url and /u
+- [ ] /blogs (maybe have multiple "tabs" to view particular forms -> HTMX)
+- [ ] /blogs/<blog id>
+
+
+Ideas for /blogs:
+
+[ Tree View | Card View | Search ]
+
+filter: category: [...] search: [...] sort: [...]
+
+The search and sort can only be something that works for card view.
+To view all blogs under a category, we head to card view and filter by that
+particular category. (this filter by category should be a dropdown but still
+input field so that you can either input text or select from the dropdown.) The
+filter in the card view should manage filtering by tags, author, date etc?.
+
+The search view can just be a search bar that searchs all possible fields with
+checkboxes for what to search on. It can also filter by category and maybe even
+by tags?
