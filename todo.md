@@ -25,6 +25,10 @@
 
 - [ ] Set up a way to hash passwords and compare passwords using bcrypt.
 
+- [ ] In the about page, include the motivation for the websites' existence.
+      This would include information such as portfolio, notes, server
+      management, etc.
+
 
 Here is a list of end-points that have to be built:
 
